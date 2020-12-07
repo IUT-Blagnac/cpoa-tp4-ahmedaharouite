@@ -33,9 +33,14 @@ public class ActionListAgenceBancaire implements ActionList {
 
 	@Override
 	public void execute(AgenceBancaire ag) throws Exception {
+		System.out.println("Menu de " + ag.getNomAgence() + " (" + ag.getLocAgence() + ")");
+		
 		for(int i=0; i<this.size(); i++) {
 			System.out.println(listeActions.get(i).actionCode() + " - " + listeActions.get(i).actionMessage());
 		}
+
+		System.out.println("q - Quitter");
+		System.out.print("Choix -> ");
 	}
 
 	@Override
@@ -57,6 +62,7 @@ public class ActionListAgenceBancaire implements ActionList {
 				bool = false;
 			}
 		}
+		
 		if (bool == false) {
 		 listeActions.add(ac);
 		}

@@ -11,6 +11,18 @@ import banque.AgenceBancaire;
 
 public class Main {
 
+	/**
+	 * Temporisation : Affiche un message et attend la frappe de n'importe quel caract�re.
+	 */
+	public static void tempo () {
+		Scanner lect ;
+		
+		lect = new Scanner (System.in );
+		
+		System.out.print("Tapper un car + return pour continuer ... ");
+		lect.next(); // Inutile � stocker mais ... 
+	}
+	
 	public static void main(String[] args) {
 		AgenceBancaire ag = AccesAgenceBancaire.getAgenceBancaire();
 
@@ -38,18 +50,13 @@ public class Main {
 				e.printStackTrace();
 			}
 			
-			choix = lect.next();
-			choix = choix.toLowerCase();			
-			
+			choix = lect.next();			
+
 			switch (choix) {
-			case "q" :
-				System.out.println("ByeBye");
-				ApplicationAgenceBancaire.tempo();
-				continuer = false;
-				break;
 			case "1" :
 				try {
 					aL.execute(ag);
+					Main.tempo();
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -57,9 +64,15 @@ public class Main {
 			case "2" :
 				try {
 					aCn.execute(ag);
+					Main.tempo();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				break;
+			case "q" :
+				System.out.println("ByeBye");
+				Main.tempo();
+				continuer = false;
 				break;
 			default :
 				System.out.println("Erreur de saisie ...");
