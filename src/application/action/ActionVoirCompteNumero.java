@@ -1,7 +1,10 @@
 package application.action;
 
+import java.util.Scanner;
+
 import action.Action;
 import banque.AgenceBancaire;
+import banque.Compte;
 
 public class ActionVoirCompteNumero implements Action {
 
@@ -26,7 +29,16 @@ public class ActionVoirCompteNumero implements Action {
 
 	@Override
 	public void execute(AgenceBancaire ag) throws Exception {
-		ag.getCompte(code).afficher();
+		System.out.print("Num compte -> ");
+		Scanner lect = new Scanner (System.in );
+		String numero = lect.next();
+		Compte c = ag.getCompte(numero);
+		
+		if (c==null) {
+			System.out.println("Compte inexistant ...");
+		} else {
+			c.afficher();
+		}
 	}
 
 }

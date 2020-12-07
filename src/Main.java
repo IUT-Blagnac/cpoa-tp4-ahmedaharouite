@@ -24,11 +24,7 @@ public class Main {
 
 		ActionListAgenceBancaire action = new ActionListAgenceBancaire("Liste agence bancaire", "1", "titre1", listeActions);
 
-		try {
-			action.execute(ag);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
 
 		Scanner lect = new Scanner(System.in);
 		lect.useLocale(Locale.US);
@@ -36,8 +32,14 @@ public class Main {
 
 		boolean continuer = true;
 		while (continuer) {
+			try {
+				action.execute(ag);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 			choix = lect.next();
-			choix = choix.toLowerCase();
+			choix = choix.toLowerCase();			
 			
 			switch (choix) {
 			case "q" :
