@@ -5,13 +5,13 @@
 	<groupId>com.iutblagnac</groupId>
 	<artifactId>cpoa-tp4</artifactId>
 	<version>1.0</version>
-	<name>TP4</name>
+	<name>cpoa-tp4</name>
 	<description>The Application Agence Bancaire example</description>
 
 	<properties>
 		<junit.version>4.13</junit.version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        	<!--<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>-->
+		<!--<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
+    	<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -36,6 +36,7 @@
 
 	<build>
 		<finalName>${project.artifactId}</finalName>
+		<sourceDirectory>src</sourceDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -53,7 +54,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>AccesAgenceBancaire</mainClass>
+							<mainClass>Main</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
