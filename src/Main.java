@@ -35,52 +35,14 @@ public class Main {
 		listeActions.add(aL);
 		listeActions.add(aCn);
 
-		ActionListAgenceBancaire action = new ActionListAgenceBancaire("Liste agence bancaire", "1", "titre1", listeActions);
+		ActionListAgenceBancaire action = new ActionListAgenceBancaire("Liste agence bancaire", "1", "Liste agence bancaire", listeActions);
 
-		
-
-		Scanner lect = new Scanner(System.in);
-		lect.useLocale(Locale.US);
-		String choix;
-
-		boolean continuer = true;
-		while (continuer) {
-			try {
-				action.execute(ag);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-			choix = lect.next();			
-
-			switch (choix) {
-			case "1" :
-				try {
-					aL.execute(ag);
-					Main.tempo();
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-				break;	
-			case "2" :
-				try {
-					aCn.execute(ag);
-					Main.tempo();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				break;
-			case "q" :
-				System.out.println("ByeBye");
-				Main.tempo();
-				continuer = false;
-				break;
-			default :
-				System.out.println("Erreur de saisie ...");
-				ApplicationAgenceBancaire.tempo();
-				break;
-			}
+		try {
+			action.execute(ag);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+			
 
 	}
 }

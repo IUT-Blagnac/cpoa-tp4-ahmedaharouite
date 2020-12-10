@@ -236,6 +236,10 @@ public class AgenceBancaire {
 	public String toString() {
 		return "Nom Agence : " + this.nom + " (" + this.loc + ") : "+this.alCptes.size()+" cptes";
 	}
+		
+	public String toString2() {
+		return "Agence " + this.nom + " de " + this.loc;
+	}
 	
 	/**
 	 * Permet d'ajouter un Compte � l'AgenceBancaire.<BR>

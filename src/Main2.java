@@ -4,8 +4,11 @@ import java.util.Scanner;
 
 import action.Action;
 import application.AccesAgenceBancaire;
+import application.action.ActionAjouterCompte;
 import application.action.ActionDeposerArgent;
 import application.action.ActionListeDesComptes;
+import application.action.ActionRetirerArgent;
+import application.action.ActionSupprimerCompte;
 import application.action.ActionVoirCompteNom;
 import application.action.ActionVoirCompteNumero;
 import application.actionlist.ActionListAgenceBancaire;
@@ -26,91 +29,43 @@ public class Main2 {
 	}
 	
 	public static void main(String[] args) {
-		AgenceBancaire ag = AccesAgenceBancaire.getAgenceBancaire();
-
+		AgenceBancaire ag = AccesAgenceBancaire.getAgenceBancaire();		
+		
+		ArrayList <Action> menuGeneral = new ArrayList <Action>();
 		Action aL = new ActionListeDesComptes("Afficher la liste des comptes", "1");
-		Action aCn = new ActionVoirCompteNumero("Afficher un compte par son numero", "2");
+		Action aCn = new ActionVoirCompteNumero("Afficher un compte par son numero", "2");		
 		Action aN = new ActionVoirCompteNom("Voir les comptes d'un Propriétaire (par son nom)", "3");
-		Action aD = new ActionDeposerArgent("Déposer de l'argent sur un compte", "4");
-		Action aR = new ActionDeposerArgent("Retirer de l'argent sur un compte", "5");
+		menuGeneral.add(aL);
+		menuGeneral.add(aCn);
+		menuGeneral.add(aN);
 		
-		ArrayList <Action> listeActions = new ArrayList <Action>();
-
-		listeActions.add(aL);
-		listeActions.add(aCn);
-		listeActions.add(aN);
-		listeActions.add(aD);
-		listeActions.add(aR);
-
-		ActionListAgenceBancaire action = new ActionListAgenceBancaire("Liste agence bancaire", "1", "titre1", listeActions);
+		
+		ArrayList <Action> menuOperations = new ArrayList <Action>();
+		Action aD = new ActionDeposerArgent("Déposer de l'argent sur un compte", "1");
+		Action aR = new ActionRetirerArgent("Retirer de l'argent sur un compte", "2");
+		menuOperations.add(aD);
+		menuOperations.add(aR);
+		
+		
+		ArrayList <Action> menuGestion = new ArrayList <Action>();
+		Action aA = new ActionAjouterCompte("Ajouter un compte", "1");
+		Action aS = new ActionSupprimerCompte("Supprimer un compte", "2");
+		menuGestion.add(aA);
+		menuGestion.add(aS);
+		
+		ActionListAgenceBancaire menu1 = new ActionListAgenceBancaire("Menu Général", "1", "Menu Général", menuGeneral);
+		ActionListAgenceBancaire menu2 = new ActionListAgenceBancaire("Menu opérations sur comptes", "4", "Menu opérations sur comptes", menuOperations);
+		ActionListAgenceBancaire menu3 = new ActionListAgenceBancaire("Menu gestion des comptes", "5", "Menu gestion des comptes", menuGestion);
+		
+		menuGeneral.add(menu2);
+		menuGeneral.add(menu3);
 
 		
 
-		Scanner lect = new Scanner(System.in);
-		lect.useLocale(Locale.US);
-		String choix;
-
-		boolean continuer = true;
-		while (continuer) {
-			try {
-				action.execute(ag);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-			choix = lect.next();			
-
-			switch (choix) {
-			case "1" :
-				try {
-					aL.execute(ag);
-					Main2.tempo();
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-				break;	
-			case "2" :
-				try {
-					aCn.execute(ag);
-					Main2.tempo(); 
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				break;
-			case "3" :
-				try {
-					aN.execute(ag);
-					Main2.tempo();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				break;
-			case "4" :
-				try {
-					aD.execute(ag);
-					Main2.tempo();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				break;
-			case "5" :
-				try {
-					aR.execute(ag);
-					Main2.tempo();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				break;
-			case "q" :
-				System.out.println("ByeBye");
-				Main2.tempo();
-				continuer = false;
-				break;
-			default :
-				System.out.println("Erreur de saisie ...");
-				ApplicationAgenceBancaire.tempo();
-				break;
-			}
+		try {
+			menu1.execute(ag);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
 	}
