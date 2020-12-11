@@ -6,7 +6,7 @@ import action.Action;
 import banque.AgenceBancaire;
 import banque.Compte;
 
-public class ActionVoirCompteNom implements Action {
+public class ActionVoirCompteNom<E> implements Action<Object> {
 
 	private String message;
 	private String code;
@@ -27,8 +27,9 @@ public class ActionVoirCompteNom implements Action {
 		return code;
 	}
 
-    @Override
-    public void execute(AgenceBancaire ag) throws Exception {
+    @SuppressWarnings("resource")
+	@Override
+    public void execute(Object ag) throws Exception {
         System.out.print("Propriétaire -> ");
 
         Scanner lect;
@@ -36,7 +37,7 @@ public class ActionVoirCompteNom implements Action {
         String nom = lect.next();
         Compte []  t; 
 
-        t = ag.getComptesDe(nom);
+        t = ((AgenceBancaire) ag).getComptesDe(nom);
         if (t.length == 0) {
             System.out.println("Pas de compte à ce nom ...");
         } else {

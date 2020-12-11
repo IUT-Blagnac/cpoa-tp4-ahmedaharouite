@@ -1,27 +1,27 @@
 package banque.exception;
 
 /************************************************************
- * Cette exception est levée par la Classe AgenceBancaire lorsque un compte n'existe pas dans l'agence.<BR>
+ * Cette exception est levï¿½e par la Classe AgenceBancaire lorsque un compte n'existe pas dans l'agence.<BR>
  * 
- * @author André Péninou.
+ * @author Andrï¿½ Pï¿½ninou.
  * @version 3.0
  *****************************/
-
+@SuppressWarnings("serial")
 public class ABCompteInexistantException  extends Exception  {
 
 	/**
-	 * Constructeur par défaut.<BR>
+	 * Constructeur par dï¿½faut.<BR>
 	 */
 	public ABCompteInexistantException() {
 		this("Erreur sur un objet de la classe AgenceBancaire");
 	}
 
 	/**
-	 * Constructeur paramétré.<BR>
+	 * Constructeur paramï¿½trï¿½.<BR>
 	 * 
 	 * @param message
-	 *            information qui sera affichée si l'exception est affichée à
-	 *            l'écran
+	 *            information qui sera affichï¿½e si l'exception est affichï¿½e ï¿½
+	 *            l'ï¿½cran
 	 */
 	public ABCompteInexistantException(String message) {
 		super(message);

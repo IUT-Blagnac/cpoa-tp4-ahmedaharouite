@@ -9,14 +9,14 @@ import action.ActionList;
 import application.AccesAgenceBancaire;
 import banque.AgenceBancaire;
 
-public class ActionListAgenceBancaire implements ActionList {
+public class ActionListAgenceBancaire<E> implements ActionList<Object> {
 
 	private String message;
 	private String code;
 	private String title;
-	private ArrayList <Action> listeActions;
+	private ArrayList <Action<E>> listeActions;
 
-	public ActionListAgenceBancaire(String message, String code, String title, ArrayList <Action> listeActions) {
+	public ActionListAgenceBancaire(String message, String code, String title, ArrayList<Action<E>> listeActions) {
 		super();
 		this.message = message;
 		this.code = code;
@@ -57,8 +57,9 @@ public class ActionListAgenceBancaire implements ActionList {
 		System.out.println("\n    0 - Pour quitter ce menu\r\n" + "Votre choix ?");
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public void execute(AgenceBancaire ag) throws Exception {
+	public void execute(Object ag) throws Exception {
 		//System.out.println("Menu de " + ag.getNomAgence() + " (" + ag.getLocAgence() + ")");
 
 		while(true) {
@@ -68,7 +69,7 @@ public class ActionListAgenceBancaire implements ActionList {
 	            System.out.println("Fin de "+ message);
 	            break;
 	        }
-			this.listeActions.get(choice).execute(ag);
+			this.listeActions.get(choice).execute((E) ag);
 		}
 	}
 
@@ -82,8 +83,8 @@ public class ActionListAgenceBancaire implements ActionList {
 		return listeActions.size();
 	}
 
-	@Override
-	public boolean addAction(Action ac) {
+	@SuppressWarnings("unchecked")
+	public boolean addAction(Action<Object> ac) {
 		boolean bool = true;
 
 		for(int i=0; i<this.size(); i++) {
@@ -93,7 +94,7 @@ public class ActionListAgenceBancaire implements ActionList {
 		}
 
 		if (bool == false) {
-			listeActions.add(ac);
+			listeActions.add((Action<E>) ac);
 		}
 
 		return bool;

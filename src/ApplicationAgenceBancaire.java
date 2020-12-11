@@ -28,6 +28,7 @@ public class ApplicationAgenceBancaire {
 	/**
 	 * Temporisation : Affiche un message et attend la frappe de n'importe quel caract�re.
 	 */
+	@SuppressWarnings("resource")
 	public static void tempo () {
 		Scanner lect ;
 		
@@ -37,6 +38,7 @@ public class ApplicationAgenceBancaire {
 		lect.next(); // Inutile � stocker mais ... 
 	}
 
+	@SuppressWarnings("resource")
 	public static void main(String argv[]) {
 		
 		String choix;

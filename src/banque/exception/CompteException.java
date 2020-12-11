@@ -1,28 +1,29 @@
 package banque.exception;
 
 /************************************************************
- * Cette exception est levée par la Classe Compte lorsque un débit ou crédit
+ * Cette exception est levï¿½e par la Classe Compte lorsque un dï¿½bit ou crï¿½dit
  * n'est pas possible. <BR>
  * 
- * @author André Péninou.
+ * @author Andrï¿½ Pï¿½ninou.
  * @version 3.0
  *****************************/
 
+@SuppressWarnings("serial")
 public class CompteException extends Exception {
 
 	/**
-	 * Constructeur par défaut.<BR>
+	 * Constructeur par dï¿½faut.<BR>
 	 */
 	public CompteException() {
 		super("Erreur sur un objet de la classe Compte");
 	}
 
 	/**
-	 * Constructeur paramétré.<BR>
+	 * Constructeur paramï¿½trï¿½.<BR>
 	 * 
 	 * @param message
-	 *            information qui sera affichée si l'exception est affichée à
-	 *            l'écran
+	 *            information qui sera affichï¿½e si l'exception est affichï¿½e ï¿½
+	 *            l'ï¿½cran
 	 */
 	public CompteException(String message) {
 		super(message);

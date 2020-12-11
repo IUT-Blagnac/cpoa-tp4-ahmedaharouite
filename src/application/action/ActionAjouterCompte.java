@@ -5,9 +5,8 @@ import java.util.Scanner;
 import action.Action;
 import banque.AgenceBancaire;
 import banque.Compte;
-import banque.exception.CompteException;
 
-public class ActionAjouterCompte implements Action{
+public class ActionAjouterCompte<E> implements Action<Object>{
 	
 	private String message;
 	private String code;
@@ -29,8 +28,7 @@ public class ActionAjouterCompte implements Action{
 	}
 
 	@SuppressWarnings("resource")
-	@Override
-	public void execute(AgenceBancaire ag) throws Exception {
+	public void execute(Object ag) throws Exception {
 		System.out.print("Num compte -> ");
 		Scanner lect = new Scanner (System.in );
 		String numero = lect.next();
@@ -38,7 +36,9 @@ public class ActionAjouterCompte implements Action{
 		String nom = lect.next();
 		
 		Compte c = new Compte(numero, nom);
-		ag.addCompte(c);	
+		((AgenceBancaire) ag).addCompte(c);	
 	}
+
+	
 
 }

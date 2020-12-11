@@ -7,7 +7,7 @@ import banque.AgenceBancaire;
 import banque.Compte;
 import banque.exception.CompteException;
 
-public class ActionRetirerArgent implements Action{
+public class ActionRetirerArgent<E> implements Action<Object>{
 	
 	private String message;
 	private String code;
@@ -28,15 +28,16 @@ public class ActionRetirerArgent implements Action{
 		return code;
 	}
 
+	@SuppressWarnings("resource")
 	@Override
-	public void execute(AgenceBancaire ag) throws Exception {
+	public void execute(Object ag) throws Exception {
 		System.out.print("Num compte -> ");
 		Scanner lect = new Scanner (System.in );
 		String numero = lect.next();
 		System.out.print("Montant à retirer -> ");
 		double montant = lect.nextDouble();
 		
-		Compte c = ag.getCompte(numero);
+		Compte c = ((AgenceBancaire) ag).getCompte(numero);
 		
 		if (c==null) {
 			System.out.println("Compte inexistant ...");
