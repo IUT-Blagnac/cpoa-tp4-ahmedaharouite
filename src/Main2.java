@@ -14,6 +14,7 @@ import banque.AgenceBancaire;
 
 public class Main2 {
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static void main(String[] args) {
 		AgenceBancaire ag = AccesAgenceBancaire.getAgenceBancaire();		
 		

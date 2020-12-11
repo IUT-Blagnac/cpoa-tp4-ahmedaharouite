@@ -54,7 +54,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>Main</mainClass>
+							<mainClass>applicationBanqueActionGenerique</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

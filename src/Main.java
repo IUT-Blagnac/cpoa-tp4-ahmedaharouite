@@ -1,12 +1,15 @@
 import java.util.ArrayList;
 
 import action.Action;
+
 import application.AccesAgenceBancaire;
 import application.action.ActionListeDesComptes;
 import application.action.ActionVoirCompteNumero;
 import application.actionlist.ActionListAgenceBancaire;
+
 import banque.AgenceBancaire;
 
+@SuppressWarnings({ "rawtypes", "unchecked" })
 public class Main {
 	
 	public static void main(String[] args) {
